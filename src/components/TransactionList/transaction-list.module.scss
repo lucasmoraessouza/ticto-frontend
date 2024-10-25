@@ -3,7 +3,6 @@
 
 .listContainer {
   width: 100%;
-  margin-top: 20px;
 }
 
 .listHeader {
@@ -16,6 +15,7 @@
   font-size: $font-size-18;
   font-weight: $font-weight-regular;
   letter-spacing: 0px;
+  margin: 0px 20px;
 
   @media (max-width: 778px) {
     grid-template-columns: 1fr 1fr 1fr 1fr 40px;
@@ -43,6 +43,7 @@
   color: $medium-gray;
   font-weight: $font-weight-regular;
   height: 63px;
+  margin: 0px 20px;
 
   @media (max-width: 778px) {
     font-size: $font-size-16;

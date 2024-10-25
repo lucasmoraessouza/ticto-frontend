@@ -8,6 +8,7 @@
   background-color: $white-color;
   border-radius: 8px;
   padding: 27px 35px;
+  margin: 0px 20px;
 
   &.valueTotalNeutral {
     background-color: $light-gray;
@@ -19,6 +20,10 @@
 
   &.valueTotalNegative {
     background-color: $accent-color-1;
+  }
+
+  @media (max-width: 778px) {
+    max-width: 100%;
   }
 }
 
