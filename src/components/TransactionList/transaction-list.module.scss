@@ -6,7 +6,6 @@
   margin-top: 20px;
 }
 
-// Cabeçalhos
 .listHeader {
   display: grid;
   grid-template-columns: 3fr 2fr 2fr 2fr 50px;
@@ -17,16 +16,19 @@
   font-size: $font-size-18;
   font-weight: $font-weight-regular;
   letter-spacing: 0px;
+
+  @media (max-width: 778px) {
+    grid-template-columns: 1fr 1fr 1fr 1fr 40px;
+    font-size: $font-size-16;
+  }
 }
 
-// Itens da lista
 .listItems {
   display: flex;
   flex-direction: column;
-  gap: 20px; // Espaçamento vertical entre os itens
+  gap: 20px;
 }
 
-// Cada item da lista
 .listItem {
   display: grid;
   grid-template-columns: 3fr 2fr 2fr 2fr 50px;
@@ -41,15 +43,29 @@
   color: $medium-gray;
   font-weight: $font-weight-regular;
   height: 63px;
+
+  @media (max-width: 778px) {
+    font-size: $font-size-16;
+    grid-template-columns: 1fr 1fr 1fr 1fr 40px;
+  }
+}
+
+.itemContent {
+  @media (max-width: 778px) {
+    max-width: 150px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
 }
 
 .negative {
-  color: $accent-color-1; 
+  color: $accent-color-1;
   font-weight: $font-weight-bold;
 }
 
 .positive {
-  color: $accent-color-2; 
+  color: $accent-color-2;
   font-weight: $font-weight-bold;
 }
 
@@ -69,4 +85,20 @@
 
 .delete-button:hover img {
   filter: opacity(1);
+}
+
+.containerNotFound {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  margin: 40px 0px;
+}
+
+.notFoundText {
+  font-size: $font-size-18;
+  font-family: $font-family-roboto;
+  font-weight: $font-weight-regular;
+  color: $primary-color;
+  opacity: 0.6;
 }

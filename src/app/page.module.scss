@@ -20,4 +20,9 @@
   justify-content: space-between;
   margin-top: -30px;
   gap: 19px;
+
+  @media (max-width: 778px) {
+   flex-wrap: wrap;
+   justify-content: center;
+  }
 }

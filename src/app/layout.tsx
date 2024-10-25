@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Toaster } from "sonner";
 import localFont from "next/font/local";
 import "./globals.scss";
 
@@ -25,6 +26,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <Toaster position="bottom-right" richColors/>
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         {children}
       </body>

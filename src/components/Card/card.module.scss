@@ -9,8 +9,16 @@
   border-radius: 8px;
   padding: 27px 35px;
 
-  &.total {
-    background-color: $highlight-color;
+  &.valueTotalNeutral {
+    background-color: $light-gray;
+  }
+
+  &.valueTotalPositive {
+    background-color: $accent-color-2;
+  }
+
+  &.valueTotalNegative {
+    background-color: $accent-color-1;
   }
 }
 
@@ -49,5 +57,13 @@
 
   &.valueTotal {
     color: $white-color;
+  }
+
+  @media (max-width: 950px) {
+    font-size: $font-size-30;
+  }
+
+  @media (max-width: 778px) {
+    font-size: $font-size-42;
   }
 }

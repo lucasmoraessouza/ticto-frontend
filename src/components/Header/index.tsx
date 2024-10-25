@@ -1,11 +1,16 @@
-"use client"
+"use client";
 
 import styles from "./header.module.scss";
 import Logo from "../../assets/logo.svg";
 import Image from "next/image";
 import { useState } from "react";
 import { TransactionModal } from "../TransactionModal";
-export function Header() {
+
+interface HeaderProps {
+  handleAdd: any;
+}
+
+export function Header({ handleAdd }: HeaderProps) {
   const [openModal, setOpenModal] = useState<boolean>(false);
 
   function handleClickModal() {
@@ -26,7 +31,11 @@ export function Header() {
           <span className={styles.buttonText}>Nova transação</span>
         </button>
       </div>
-      <TransactionModal isOpen={openModal} onClose={handleClickModal} />
+      <TransactionModal
+        isOpen={openModal}
+        onClose={handleClickModal}
+        handleAdd={handleAdd}
+      />
     </div>
   );
 }

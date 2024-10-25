@@ -1,4 +1,3 @@
-// components/TransactionModal.tsx
 import { useState } from "react";
 import styles from "./transaction-modal.module.scss";
 import Image from "next/image";
@@ -6,16 +5,55 @@ import {} from "feather-icons";
 import iconClose from "../../assets/icon-close.svg";
 import incomeIcon from "../../assets/icon-circle-up.svg";
 import outcomeIcon from "../../assets/icon-circle-down.svg";
+import { format } from "date-fns";
+import { toast } from "sonner";
 
 interface TransactionModalProps {
   isOpen: boolean;
+  handleAdd: any;
   onClose: () => void;
 }
 
-export function TransactionModal({ isOpen, onClose }: TransactionModalProps) {
+export function TransactionModal({
+  handleAdd,
+  isOpen,
+  onClose,
+}: TransactionModalProps) {
+  const generateID = () => Math.round(Math.random() * 1000);
+  const [name, setName] = useState<string>("");
+  const [price, setPrice] = useState<number>(0);
+  const [category, setCategory] = useState<string>("");
+  const date = format(new Date(), "dd/MM/yyyy HH:mm:ss");
   const [transactionType, setTransactionType] = useState<
     "income" | "outcome" | null
-  >(null);
+  >("income");
+
+  function handleCreate() {
+    if (!name || !price || !category) {
+      return toast.error(
+        "Preencha todos os campos para cadastrar uma nova transação."
+      );
+    }
+    const newTransaction = {
+      id: generateID(),
+      name,
+      price,
+      category,
+      date,
+      type: transactionType,
+    };
+    handleAdd(newTransaction);
+    toast.success("Transação cadastrada com sucesso.");
+    onClose();
+    handleClear();
+  }
+
+  function handleClear() {
+    setName("");
+    setPrice(0);
+    setCategory("");
+    setTransactionType(null);
+  }
 
   if (!isOpen) return null;
 
@@ -27,8 +65,19 @@ export function TransactionModal({ isOpen, onClose }: TransactionModalProps) {
         </button>
         <div className={styles.content}>
           <span className={styles.title}>Cadastrar Transação</span>
-          <input className={styles.input} placeholder="Nome" />
-          <input className={styles.input} placeholder="Preço" />
+          <input
+            className={styles.input}
+            placeholder="Nome"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+          />
+          <input
+            className={styles.input}
+            placeholder="Preço"
+            type="number"
+            value={price}
+            onChange={(e) => setPrice(Number(e.target.value))}
+          />
           <div className={styles.transactionTypeContainer}>
             <button
               className={`${styles.typeButton} ${
@@ -59,9 +108,16 @@ export function TransactionModal({ isOpen, onClose }: TransactionModalProps) {
               Saída
             </button>
           </div>
-          <input className={styles.input} placeholder="Categoria" />
+          <input
+            className={styles.input}
+            placeholder="Categoria"
+            value={category}
+            onChange={(e) => setCategory(e.target.value)}
+          />
 
-          <button className={styles.submitButton}>Cadastrar</button>
+          <button className={styles.submitButton} onClick={handleCreate}>
+            Cadastrar
+          </button>
         </div>
       </div>
     </div>
