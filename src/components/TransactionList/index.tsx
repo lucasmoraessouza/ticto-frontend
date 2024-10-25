@@ -45,7 +45,7 @@ export function TransactionList({
                       : styles.positive
                   }
                 >
-                  {formatMoney(transaction.price).toString()}
+                  R$ {formatMoney(transaction.price).toString()}
                 </span>
                 <span className={styles.itemContent}>
                   {transaction.category}

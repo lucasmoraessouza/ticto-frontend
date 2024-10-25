@@ -77,7 +77,7 @@ export function TransactionModal({
           <input
             className={styles.input}
             placeholder="Preço"
-            value={FormatMoneyDynamicWithoutSymbol(price ?? 0)}
+            value={`R$ ${FormatMoneyDynamicWithoutSymbol(price ?? 0)}`}
             onChange={(e) => setPrice(e.target.value)}
           />
           <div className={styles.transactionTypeContainer}>

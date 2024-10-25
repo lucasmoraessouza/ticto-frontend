@@ -1,36 +1,90 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Ticto - Desafio frontend
 
-## Getting Started
+Sistema web de dashboard financeiro desenvolvido com Next.js (versão 15). Ele permite cadastrar e gerenciar registros financeiros, utilizando o local storage para armazenamento dos dados.
 
-First, run the development server:
+- **Responsividade:** Otimizado para dispositivos móveis.
+- **Validação:** Validação de campos no modal de criação de transações.
+- **Armazenamento Contínuo:** Dados armazenados de forma persistente no local storage.
+- **Cards Dinâmicos:** Card de saldo que se adapta automaticamente aos valores inseridos.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+### Como iniciar:
+
+**01 - Clone o repositório** 
+```
+$ git clone https://github.com/lucasmoraessouza/ticto-frontend.git
+```
+**02 - Acesse o diretório do projeto:** 
+
+```
+$ cd ticto-frontend
+```
+**03 - Instale as dependências:** 
+```
+$ npm install
+```
+**04 - Inicie o servidor de desenvolvimento:**
+```
+$ npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Testes# Ticto - Desafio frontend
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Sistema web de dashboard financeiro desenvolvido com Next.js (versão 15). Ele permite cadastrar e gerenciar registros financeiros, utilizando o local storage para armazenamento dos dados.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- **Responsividade:** Otimizado para dispositivos móveis.
+- **Validação:** Validação de campos no modal de criação de transações.
+- **Armazenamento Contínuo:** Dados armazenados de forma persistente no local storage.
+- **Cards Dinâmicos:** Card de saldo que se adapta automaticamente aos valores inseridos.
 
-## Learn More
+### Como iniciar:
 
-To learn more about Next.js, take a look at the following resources:
+**01 - Clone o repositório** 
+```
+$ git clone https://github.com/lucasmoraessouza/ticto-frontend.git
+```
+**02 - Acesse o diretório do projeto:** 
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```
+$ cd ticto-frontend
+```
+**03 - Instale as dependências:** 
+```
+$ npm install
+```
+**04 - Inicie o servidor de desenvolvimento:**
+```
+$ npm run dev
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Testes
 
-## Deploy on Vercel
+Realize os seguintes testes para verificar a funcionalidade do sistema:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- Cadastrar uma nova transação financeira.
+- Excluir uma transação existente.
+- Tentar cadastrar uma transação sem as informações obrigatórias e verificar a validação.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+## Autores
+
+- **Lucas de Moraes Souza**
+
+## Agradecimentos
+
+- **Ticto**
+
+
+Realize os seguintes testes para verificar a funcionalidade do sistema:
+
+- Cadastrar uma nova transação financeira.
+- Excluir uma transação existente.
+- Tentar cadastrar uma transação sem as informações obrigatórias e verificar a validação.
+
+
+## Autores
+
+- **Lucas de Moraes Souza**
+
+## Agradecimentos
+
+- **Ticto**
