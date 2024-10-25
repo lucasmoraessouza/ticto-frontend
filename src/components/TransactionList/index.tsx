@@ -3,19 +3,10 @@ import deleteIcon from "../../assets/icon-trash.svg";
 import styles from "./transaction-list.module.scss";
 import { formatMoney } from "@/utils/mask";
 import { toast } from "sonner";
-
-interface Transaction {
-  id: number;
-  name: string;
-  price: number;
-  type: "income" | "outcome";
-  category: string;
-  date: string;
-}
-
+import { Transaction } from "@/dtos/transaction";
 interface ListProps {
   transactions: Transaction[];
-  setTransactionsList: any;
+  setTransactionsList: (transaction: Transaction[]) => void;
 }
 
 export function TransactionList({
@@ -54,7 +45,7 @@ export function TransactionList({
                       : styles.positive
                   }
                 >
-                  {formatMoney(transaction.price.toFixed(2)).toString()}
+                  {formatMoney(transaction.price).toString()}
                 </span>
                 <span className={styles.itemContent}>
                   {transaction.category}

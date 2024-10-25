@@ -5,9 +5,10 @@ import Logo from "../../assets/logo.svg";
 import Image from "next/image";
 import { useState } from "react";
 import { TransactionModal } from "../TransactionModal";
+import { Transaction } from "@/dtos/transaction";
 
 interface HeaderProps {
-  handleAdd: any;
+  handleAdd: (transaction: Transaction) => void;
 }
 
 export function Header({ handleAdd }: HeaderProps) {
@@ -31,11 +32,13 @@ export function Header({ handleAdd }: HeaderProps) {
           <span className={styles.buttonText}>Nova transação</span>
         </button>
       </div>
-      <TransactionModal
-        isOpen={openModal}
-        onClose={handleClickModal}
-        handleAdd={handleAdd}
-      />
+      {openModal && (
+        <TransactionModal
+          isOpen={openModal}
+          onClose={handleClickModal}
+          handleAdd={handleAdd}
+        />
+      )}
     </div>
   );
 }

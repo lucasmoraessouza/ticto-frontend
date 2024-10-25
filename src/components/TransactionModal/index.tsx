@@ -7,10 +7,12 @@ import incomeIcon from "../../assets/icon-circle-up.svg";
 import outcomeIcon from "../../assets/icon-circle-down.svg";
 import { format } from "date-fns";
 import { toast } from "sonner";
+import { Transaction } from "@/dtos/transaction";
+import { FormatMoneyDynamicWithoutSymbol, parseCurrency } from "@/utils/mask";
 
 interface TransactionModalProps {
   isOpen: boolean;
-  handleAdd: any;
+  handleAdd: (transaction: Transaction) => void;
   onClose: () => void;
 }
 
@@ -21,23 +23,24 @@ export function TransactionModal({
 }: TransactionModalProps) {
   const generateID = () => Math.round(Math.random() * 1000);
   const [name, setName] = useState<string>("");
-  const [price, setPrice] = useState<number>(0);
+  const [price, setPrice] = useState<string>("0");
   const [category, setCategory] = useState<string>("");
   const date = format(new Date(), "dd/MM/yyyy HH:mm:ss");
-  const [transactionType, setTransactionType] = useState<
-    "income" | "outcome" | null
-  >("income");
+  const [transactionType, setTransactionType] = useState<"income" | "outcome">(
+    "income"
+  );
 
   function handleCreate() {
     if (!name || !price || !category) {
-      return toast.error(
+      toast.error(
         "Preencha todos os campos para cadastrar uma nova transação."
       );
+      return;
     }
     const newTransaction = {
       id: generateID(),
       name,
-      price,
+      price: parseCurrency(price),
       category,
       date,
       type: transactionType,
@@ -50,9 +53,9 @@ export function TransactionModal({
 
   function handleClear() {
     setName("");
-    setPrice(0);
+    setPrice("0");
     setCategory("");
-    setTransactionType(null);
+    setTransactionType("income");
   }
 
   if (!isOpen) return null;
@@ -74,9 +77,8 @@ export function TransactionModal({
           <input
             className={styles.input}
             placeholder="Preço"
-            type="number"
-            value={price}
-            onChange={(e) => setPrice(Number(e.target.value))}
+            value={FormatMoneyDynamicWithoutSymbol(price ?? 0)}
+            onChange={(e) => setPrice(e.target.value)}
           />
           <div className={styles.transactionTypeContainer}>
             <button

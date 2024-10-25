@@ -4,31 +4,26 @@ import { Header } from "@/components/Header";
 import { TransactionList } from "@/components/TransactionList";
 import { useEffect, useState } from "react";
 import styles from "./page.module.scss";
+import { Transaction } from "@/dtos/transaction";
 
-interface Transaction {
-  id: number;
-  name: string;
-  price: number;
-  type: "income" | "outcome";
-  category: string;
-  date: string;
-}
 export default function Home() {
-  const data = localStorage.getItem("transactions");
-  const [transactionsList, setTransactionsList] = useState<Transaction[]>(
-    data ? JSON.parse(data) : []
-  );
+  const [transactionsList, setTransactionsList] = useState<Transaction[]>([]);
   const [income, setIncome] = useState<string>("0");
   const [expense, setExpense] = useState<string>("0");
   const [total, setTotal] = useState<string>("0");
+
+  useEffect(() => {
+    const data = localStorage.getItem("transactions");
+    if (data) {
+      setTransactionsList(JSON.parse(data));
+    }
+  }, []);
 
   const cardTypes = [
     { type: "input", value: income },
     { type: "output", value: expense },
     { type: "total", value: total },
   ] as const;
-
-  console.log("cardTypes: ", cardTypes);
 
   useEffect(() => {
     const amountIncome = transactionsList
@@ -47,7 +42,6 @@ export default function Home() {
       .toFixed(2);
 
     const total = (Number(totalIncome) - Number(totalExpense)).toFixed(2);
-    console.log("total: ", total)
     setIncome(totalIncome);
     setExpense(totalExpense);
     setTotal(total);
