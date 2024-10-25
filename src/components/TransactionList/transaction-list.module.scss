@@ -1,0 +1,104 @@
+@use "../../styles/variables" as *;
+@use "../../styles/typography" as *;
+
+.listContainer {
+  width: 100%;
+  margin-top: 20px;
+}
+
+.listHeader {
+  display: grid;
+  grid-template-columns: 3fr 2fr 2fr 2fr 50px;
+  justify-items: start;
+  padding: 15px 0;
+  font-family: $font-family-roboto;
+  color: $button-text;
+  font-size: $font-size-18;
+  font-weight: $font-weight-regular;
+  letter-spacing: 0px;
+
+  @media (max-width: 778px) {
+    grid-template-columns: 1fr 1fr 1fr 1fr 40px;
+    font-size: $font-size-16;
+  }
+}
+
+.listItems {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.listItem {
+  display: grid;
+  grid-template-columns: 3fr 2fr 2fr 2fr 50px;
+
+  align-items: center;
+  background-color: #fff;
+  padding: 0px 15px;
+  border-radius: 8px;
+  border: none;
+  font-family: $font-family-roboto;
+  font-size: $font-size-18;
+  color: $medium-gray;
+  font-weight: $font-weight-regular;
+  height: 63px;
+
+  @media (max-width: 778px) {
+    font-size: $font-size-16;
+    grid-template-columns: 1fr 1fr 1fr 1fr 40px;
+  }
+}
+
+.itemContent {
+  @media (max-width: 778px) {
+    max-width: 150px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
+
+.negative {
+  color: $accent-color-1;
+  font-weight: $font-weight-bold;
+}
+
+.positive {
+  color: $accent-color-2;
+  font-weight: $font-weight-bold;
+}
+
+.delete-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.delete-button img {
+  filter: opacity(0.7);
+  transition: filter 0.2s ease-in-out;
+}
+
+.delete-button:hover img {
+  filter: opacity(1);
+}
+
+.containerNotFound {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  margin: 40px 0px;
+}
+
+.notFoundText {
+  font-size: $font-size-18;
+  font-family: $font-family-roboto;
+  font-weight: $font-weight-regular;
+  color: $primary-color;
+  opacity: 0.6;
+}
